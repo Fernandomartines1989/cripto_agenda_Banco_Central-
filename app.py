@@ -40,8 +40,8 @@ for compromisso in dados["conteudo"]:
 
 nova_mensagem_2 = '\n'.join(mensagens)
 
-TELEGRAM_API_KEY = os.environ["TELEGRAM_API_KEY_2"]
-TELEGRAM_ADMIN_ID = os.environ["TELEGRAM_ADMIN_ID_2"]
+TELEGRAM_API_KEY = os.environ["TELEGRAM_API_KEY_22"]
+TELEGRAM_ADMIN_ID = os.environ["TELEGRAM_ADMIN_ID_22"]
 
 app = Flask(__name__)
 
