@@ -38,7 +38,7 @@ for compromisso in dados["conteudo"]:
           mensagem_adicionada = True
           printado = True
 
-nova_mensagem = '\n'.join(mensagens)
+nova_mensagem_2 = '\n'.join(mensagens)
 
 TELEGRAM_API_KEY = os.environ["TELEGRAM_API_KEY_2"]
 TELEGRAM_ADMIN_ID = os.environ["TELEGRAM_ADMIN_ID_2"]
@@ -56,7 +56,7 @@ def telegram_bot():
   update = request.json
   chat_id = update["message"]["chat"]["id"]
   message = update["message"]["text"]
-  nova_mensagem = {"chat_id": chat_id, "text": nova_mensagem}
+  nova_mensagem = {"chat_id": chat_id, "text": nova_mensagem_2}
   mensagem_if = {"chat_id": chat_id, "text": f"Olá! Seja bem-vindo (a). Quer saber se alguma autoridade do Banco Central tem algum evento de criptomoedas em sua agenda em {hoje}? Digite Sim" }
   mensagem_else = {"chat_id": chat_id, "text": "Não entendi Digite /start e eu te digo o que sei fazer" }
   if message == "/start":
