@@ -8,6 +8,8 @@ from datetime import datetime
 
 from flask import Flask
 
+import re
+
 TELEGRAM_API_KEY = os.environ["TELEGRAM_API_KEY_2"]
 TELEGRAM_ADMIN_ID = os.environ["TELEGRAM_ADMIN_ID_2"]
 
