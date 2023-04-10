@@ -51,7 +51,7 @@ def hello_world():
    return "Olá, mundo!"
 
 
-@app.route("/telegram-bot")
+@app.route("/telegram-bot", methods=["POST"])
 def telegram_bot():
   update = request.json
   chat_id = update["message"]["chat"]["id"]
