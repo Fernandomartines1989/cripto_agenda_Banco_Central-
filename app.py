@@ -51,24 +51,12 @@ def hello_world():
    return "Olá, mundo!"
 
 
-@app.route("/telegram-bot", methods=["POST"])
+@app.route("/telegram-bot")
 def telegram_bot():
-  hoje = datetime.now().strftime("%d-%m-%Y")
   update = request.json
-  print("Received update:", update)  # Adiciona uma instrução de depuração para verificar se o servidor está recebendo as mensagens corretamente
   chat_id = update["message"]["chat"]["id"]
   message = update["message"]["text"]
-  nova_mensagem = {"chat_id": chat_id, "text": nova_mensagem_2}
-  mensagem_if = {"chat_id": chat_id, "text": f"Olá! Seja bem-vindo (a). Quer saber se alguma autoridade do Banco Central tem algum evento de criptomoedas em sua agenda em {hoje}? Digite Sim" }
-  mensagem_else = {"chat_id": chat_id, "text": "Não entendi Digite /start e eu te digo o que sei fazer" }
-  if message == "/start":
-    texto_resposta = requests.post(f"https://api.telegram.org./bot{TELEGRAM_API_KEY}/sendMessage", data=mensagem_if)
-    print("Sent response:", texto_resposta.json())  # Adiciona uma instrução de depuração para verificar se o servidor está tentando enviar respostas para o Telegram
-  elif message.lower() == "sim":
-    texto_resposta = requests.post(f"https://api.telegram.org./bot{TELEGRAM_API_KEY}/sendMessage", data=nova_mensagem)
-    print("Sent response:", texto_resposta.json())  # Adiciona uma instrução de depuração para verificar se o servidor está tentando enviar respostas para o Telegram
-  else:
-    texto_resposta = requests.post(f"https://api.telegram.org./bot{TELEGRAM_API_KEY}/sendMessage", data=mensagem_else)
-    print("Sent response:", texto_resposta.json())  # Adiciona uma instrução de depuração para verificar se o servidor está tentando enviar respostas para o Telegram
+  nova_mensagem = {"chat_id": chat_id, "text": message}
+  requests.post(f"https://api.telegram.org./bot{TELEGRAM_API_KEY}/sendMessage", data=nova_mensagem)
   return "ok"
 
