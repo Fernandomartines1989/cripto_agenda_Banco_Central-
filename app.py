@@ -4,9 +4,9 @@ import getpass
 import json
 
 from bs4 import BeautifulSoup
-from datetime import datetime
+from datetime import datetime 
 
-from flask import Flask
+from flask import Flask, request
 
 import re
 
@@ -40,8 +40,8 @@ for compromisso in dados["conteudo"]:
 
 nova_mensagem_2 = '\n'.join(mensagens)
 
-TELEGRAM_API_KEY = "6030250728:AAFc3tBsJ9szz1ppMiqVO3EP8FXgUh52D4Y"
-TELEGRAM_ADMIN_ID = "1961236674"
+TELEGRAM_API_KEY = os.environ["TELEGRAM_API_KEY_22"]
+TELEGRAM_ADMIN_ID = os.environ["TELEGRAM_ADMIN_ID_22"]
 
 app = Flask(__name__)
 
