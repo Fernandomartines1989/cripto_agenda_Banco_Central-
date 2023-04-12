@@ -38,7 +38,7 @@ for compromisso in dados["conteudo"]:
           mensagem_adicionada = True
           printado = True
 
-nova_mensagem_2 = '\n'.join(mensagens)
+raspagem_bacen = '\n'.join(mensagens)
 
 TELEGRAM_API_KEY = os.environ["TELEGRAM_API_KEY_22"]
 TELEGRAM_ADMIN_ID = os.environ["TELEGRAM_ADMIN_ID_22"]
@@ -56,7 +56,22 @@ def telegram_bot():
   update = request.json
   chat_id = update["message"]["chat"]["id"]
   message = update["message"]["text"]
-  nova_mensagem = {"chat_id": chat_id, "text": message}
-  requests.post(f"https://api.telegram.org./bot{TELEGRAM_API_KEY}/sendMessage", data=nova_mensagem)
+  
+  if message == "/start":
+      hoje = datetime.now().strftime("%d-%m-%Y)
+      mensagem = f"Olá! Seja bem-vindo(a). Quer saber se alguma autoridade do Banco Central tem algum evento de criptomoedas em sua agenda em {hoje}? Digite Sim"
+                                     
+  elif message.lower() == "sim":
+      mensagem = raspagem_bacen()
+                                  
+  else:
+      mensagem = "Não entendi. Digite /start e eu te digo o que eu sei fazer"
+                                     
+  requests.post(
+      f"https://api.telegram.org./bot{TELEGRAM_API_KEY}/sendMessage",
+      chat_id=chat_id,
+      data=mensagem,
+  )
+       
   return "ok"
 
