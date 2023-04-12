@@ -37,6 +37,10 @@ for compromisso in dados["conteudo"]:
           mensagens.append(f"A autoridade {autoridade} tem um compromisso de autoridade do BC no setor cripto hoje: {descricao}")
           mensagem_adicionada = True
           printado = True
+        
+if not mensagens:
+    mensagens.append("Hoje nenhuma autoridade da Banco Central tem na agenda um evento envolvendo criptomoedas")
+
 
 raspagem_bacen = '\n'.join(mensagens)
 
