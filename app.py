@@ -66,7 +66,7 @@ def telegram_bot():
       mensagem = f"Olá! Seja bem-vindo(a). Quer saber se alguma autoridade do Banco Central tem algum evento de criptomoedas em sua agenda em {hoje}? Digite Sim"
                                      
   elif message.lower() == "sim":
-      mensagem = raspagem_bacen()
+      mensagem = raspagem_bacen
                                   
   else:
       mensagem = "Não entendi. Digite /start e eu te digo o que eu sei fazer"
