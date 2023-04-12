@@ -62,7 +62,7 @@ def telegram_bot():
   message = update["message"]["text"]
   
   if message == "/start":
-      hoje = datetime.now().strftime("%d-%m-%Y)
+      hoje = datetime.now().strftime("%d-%m-%Y")
       mensagem = f"Olá! Seja bem-vindo(a). Quer saber se alguma autoridade do Banco Central tem algum evento de criptomoedas em sua agenda em {hoje}? Digite Sim"
                                      
   elif message.lower() == "sim":
