@@ -2,6 +2,8 @@ import os
 import requests
 import getpass
 import json
+import schedule
+import time
 
 from bs4 import BeautifulSoup
 from datetime import datetime 
@@ -46,8 +48,20 @@ raspagem_bacen = '\n'.join(mensagens)
 
 TELEGRAM_API_KEY = os.environ["TELEGRAM_API_KEY_22"]
 TELEGRAM_ADMIN_ID = os.environ["TELEGRAM_ADMIN_ID_22"]
+TELEGRAM_CANAL_ID = os.environ["TELEGRAM_CANAL_ID"]
 
 app = Flask(__name__)
+
+def postar_mensagem():
+    nova_mensagem = {"chat_id": TELEGRAM_CANAL_ID, "text": raspagem_bacen}
+    requests.post(f"https://api.telegram.org/bot{TELEGRAM_API_KEY}/sendMessage", data=nova_mensagem)
+
+# Define o horário em que a mensagem será enviada
+schedule.every().day.at("09:00").do(postar_mensagem)
+
+while True:
+    schedule.run_pending()
+    time.sleep(1)
 
 
 @app.route("/")
