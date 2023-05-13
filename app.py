@@ -1,9 +1,8 @@
 import os
-from datetime import datetime
-
+import datetime
 import httpx
-from bs4 import BeautifulSoup
-from flask import Flask, request
+import BeautifulSoup
+import Flask, request
 
 hoje = datetime.now().strftime("%Y-%m-%d")
 data = httpx.get(f"https://www.bcb.gov.br/api/servico/sitebcb/agendadiretoria?lista=Agenda%20da%20Diretoria&inicioAgenda=%27{hoje}%27&fimAgenda=%27{hoje}%27")
