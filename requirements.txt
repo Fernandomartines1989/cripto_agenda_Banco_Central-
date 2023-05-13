@@ -3,4 +3,3 @@ gunicorn
 requests
 bs4
 httpx
-schedule
