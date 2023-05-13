@@ -9,10 +9,15 @@ hoje = datetime.now().strftime("%Y-%m-%d")
 data = httpx.get(f"https://www.bcb.gov.br/api/servico/sitebcb/agendadiretoria?lista=Agenda%20da%20Diretoria&inicioAgenda=%27{hoje}%27&fimAgenda=%27{hoje}%27")
 dados = data.json()
 
-desc = dados["conteudo"][0]["descricao"]
-parsed = BeautifulSoup(desc, "html.parser")
-
 mensagens = []
+
+try:
+    desc = dados["conteudo"][0]["descricao"]
+except IndexError:
+    mensagens.append("Hoje não tem nenhum tipo de evento na agenda de autoridades")
+    desc = None
+
+
 
 if not dados["conteudo"]:
     mensagens.append("Hoje não tem nenhum tipo de evento na agenda de autoridades")
