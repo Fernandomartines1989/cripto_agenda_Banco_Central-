@@ -46,7 +46,6 @@ raspagem_bacen = '\n'.join(mensagens)
 
 TELEGRAM_API_KEY = os.environ["TELEGRAM_API_KEY_22"]
 TELEGRAM_ADMIN_ID = os.environ["TELEGRAM_ADMIN_ID_22"]
-TELEGRAM_CANAL_ID = os.environ["TELEGRAM_CANAL_ID"]
 
 app = Flask(__name__)
 
